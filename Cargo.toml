@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 failure = "0.1.6"
+regex = "1"
+lazy_static = "1.4.0"

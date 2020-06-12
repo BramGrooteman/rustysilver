@@ -41,9 +41,6 @@ impl Graph  {
         };
 
         let filebuf = BufReader::new(&graph_file);
-        let mut no_nodes:usize = 0;
-        let mut no_edges:usize = 0;
-        let mut no_labels:usize = 0;
         
         let header = filebuf.lines().next().unwrap()?;
         let (no_nodes, no_edges, no_labels) = Graph::read_header(header)?;
@@ -61,8 +58,8 @@ impl Graph  {
         let filebuf2 = BufReader::new(&graph_file);
         for line in filebuf2.lines().skip(1) {
             let l = line?; 
-            let (from, edgeLabel, to) = Graph::read_line(l)?;
-            graph.add_edge(from, edgeLabel, to);
+            let (from, edge_label, to) = Graph::read_line(l)?;
+            graph.add_edge(from, edge_label, to).unwrap();
         }
         Ok(graph)
     }
